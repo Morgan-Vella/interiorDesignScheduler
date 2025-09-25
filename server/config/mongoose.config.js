@@ -1,0 +1,18 @@
+import { connect } from 'mongoose' 
+import dotenv from 'dotenv' 
+
+dotenv.config();
+const MONGODB_URI = process.env.MONGODB_URI;
+
+async function dbConnect() {
+    try {
+        await connect(MONGODB_URI, {
+            dbName: "YOUR_DB_NAME"
+        });
+        console.log("Pinged your deployment. Successfully connected to MongoDb!")
+    } catch (err) {
+        throw err
+    }
+}
+
+export default dbConnect; 
